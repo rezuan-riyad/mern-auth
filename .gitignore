@@ -1,7 +1,8 @@
-.env
+/.env
 
 # dependencies
-node_modules
+/node_modules
+/client/node_modules
 
 # testing
 coverage
