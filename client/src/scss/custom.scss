@@ -1,0 +1,94 @@
+$primary:  green;
+$font-size-base: .9rem;
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+
+/*********** CUSTOM FORM-INPUT STYLE ************/
+.form-group{
+  position: relative;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+// form label position change with all transition properties
+.form-label{
+    position: absolute;
+    top: .75rem;
+    left: .75rem;
+    font-size: .9rem;
+    pointer-events: none;
+    transition: all .25s ease-in-out;
+    color: $secondary;
+}
+
+// form input => form-control class
+.form-control{
+  border: none;
+  border-bottom: 1px solid $secondary;
+  border-radius: 0;
+  height: 3rem;
+
+  &:focus{
+    box-shadow: none;
+    border-bottom: 2px solid $primary;
+  }
+
+  &:focus + .form-label{
+    position: absolute;
+    top: -.8rem;
+    left: 0;
+    font-size: .75rem;
+    color: $primary;
+  }
+}
+
+
+.form-text{
+  color: $danger;
+}
+
+// persist label:focus style while text on input field
+.text-written{
+  position: absolute;
+  top: -.8rem;
+  left: 0;
+  font-size: .75rem;
+  color: $primary;
+}
+
+/********** CUSTOM BUTTON STYLE ************/
+
+button{
+  min-width: 100px;
+}
+
+//one-edge box shadow
+.btn-primary:focus, .btn-secondary:focus{
+  box-shadow: 0 8px 6px -6px gray;
+}
+
+/* CHECK-CIRCLE color change according to form step */
+.stepOne{
+  .circle1{
+    color: $primary;
+  }
+}
+
+.stepTwo{
+  .circle1, .circle2{
+    color: $primary;
+  }
+  #span1{
+    background: $primary;
+  }
+}
+
+.stepThree{
+  .circle1, .circle2, .circle3{
+    color: $primary;
+  }
+
+  #span1, #span2{
+    background: $primary;
+  }
+}

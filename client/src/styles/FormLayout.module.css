@@ -1,0 +1,66 @@
+.card{
+  height: 80vh;
+  max-width: 700px;
+  min-width: none;
+  margin: 10vh auto;
+  border-radius: 15px;
+  box-shadow: 0px 0px 32px lightgray;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+.leftSide{
+  background-color: rgb(226, 144, 112);
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.leftSide p{
+  text-align: center;
+}
+
+/* image container div */
+.image{
+  height: 120px;
+  width: 120px;
+  margin: 20px auto;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0px 0px 32px rgb(148, 67, 35);
+}
+
+.image img{
+  width: 100%;
+  height: 100%;
+}
+
+.rightSide{
+  width: 60%;
+  height: 100%;
+}
+
+.checks{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+.bar{
+  margin: 0 10px;
+  height: 2px;
+  width: 20px;
+  background-color: lightgray;
+}
+
+
+/* Right Side of Sign In page styling */
+.signin{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
