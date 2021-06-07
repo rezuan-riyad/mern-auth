@@ -27,7 +27,7 @@ export default function StepThree({ stepDown }) {
     }
     dispatch({ type: "SIGNUP" })
 
-    axios.post("http://localhost:5000/api/user/signup", data, {
+    axios.post("/api/user/signup", data, {
       "Content-type": "application/json"
     })
       .then(res => {

@@ -28,7 +28,7 @@ export default function Login() {
       })
     } 
     dispatch({ type: 'LOGIN' })
-    axios.post("http://localhost:5000/api/user/signin", { email, password }, {
+    axios.post("/api/user/signin", { email, password }, {
       "Content-type": "application/json"
     })
       .then(res => {
