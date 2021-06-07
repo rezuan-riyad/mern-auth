@@ -34,6 +34,11 @@ export function loginReducer(state = loginState, action){
         error: action.payload,
         message: ""
       }
+    case 'SET_ERROR':
+      return {
+        ...state,
+        error: action.payload
+      }
     case 'LOGOUT':
       return loginState
     

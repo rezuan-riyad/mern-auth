@@ -5,6 +5,7 @@ import logo from '../assets/img/logo.png'
 import { Form, Button } from 'react-bootstrap'
 import { loginState, loginReducer } from './reducers/loginReducer'
 import { Link, Redirect } from 'react-router-dom'
+import MessageDisplay from './MessageDisplay'
 
 export default function Login() {
   const [state, dispatch] = useReducer(loginReducer, loginState)
@@ -20,9 +21,13 @@ export default function Login() {
 
   const handleSubmission = (e) => {
     e.preventDefault();
-
+    if(!email || !password){
+      return dispatch({ 
+        type: 'SET_ERROR', 
+        payload: "Email and Password must be filled."
+      })
+    } 
     dispatch({ type: 'LOGIN' })
-
     axios.post("http://localhost:5000/api/user/signin", { email, password }, {
       "Content-type": "application/json"
     })
@@ -36,18 +41,17 @@ export default function Login() {
           type: 'SUCCESS',
           payload: "You are successfully logged in."
         })
-        console.log(res)
       })
       .catch(err => {
         dispatch({
           type: 'FAILED',
           payload: err.response.data.message
         })
-        console.log(err.name)
       })
   }
 
-  if(isLoggedin){
+
+  if (isLoggedin) {
     return <Redirect to="/" />
   }
 
@@ -62,7 +66,12 @@ export default function Login() {
       </div>
 
       <div className={`${styles.rightSide} ${styles.signin}`}>
+
         <Form className="w-75 m-auto">
+          {
+            error ? 
+            <MessageDisplay error={error} /> : null
+          }
           <Form.Group>
             <Form.Control
               type="text"
@@ -83,15 +92,15 @@ export default function Login() {
             <Form.Label className={password ? "text-written" : null}>Password</Form.Label>
           </Form.Group>
 
-          <Button variant="primary" className="mr-3" 
-           onClick={handleSubmission}>
-            Sign In
+          <Button variant="primary" className="mr-3"
+            onClick={handleSubmission}
+            disabled={isLoading}>
+            {isLoading ? "Logging..." : "Log In"}
           </Button>
 
           <p className="mt-3">Don't have any account? <Link to="/register">Registration</Link></p>
         </Form>
       </div>
-
     </div>
   )
 }

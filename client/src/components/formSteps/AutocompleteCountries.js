@@ -31,7 +31,7 @@ export default function AutocompleteCountries({ setShowcountries }) {
       })
       setCountriesList(renderedCountries)
     }
-  }, [user, setUser])
+  }, [user, setUser, user.countryCode])
 
   return (
     <div className="position-relative">

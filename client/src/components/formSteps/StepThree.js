@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { UserContext } from '../contexts/UserContext'
 import { signupState, signupReducer } from '../reducers/registerReducer'
 import { Link } from 'react-router-dom'
+import MessageDisplay from '../MessageDisplay';
 
 export default function StepThree({ stepDown }) {
 
@@ -43,9 +44,7 @@ export default function StepThree({ stepDown }) {
 
   return (
     <div className="w-75 m-auto pt-5">
-      {
-        isSubmitting ? <h5>Submitting.... </h5> : null
-      }
+      { error ? <MessageDisplay error={error} /> : null }
       {
         isSubmitted ? (
           <>
@@ -66,7 +65,8 @@ export default function StepThree({ stepDown }) {
             <p><strong>Location: </strong> {city}, {country}</p>
             <Button variant="primary"
               className="mr-3"
-              onClick={handleSubmission}>
+              onClick={handleSubmission}
+              disabled={isSubmitting}>
               Confirm
             </Button>
             <Button variant="secondary"
