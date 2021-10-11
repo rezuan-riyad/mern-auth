@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../utils/axios';
 import React, { useContext, useReducer } from 'react'
 import { Button } from "react-bootstrap";
 import { UserContext } from '../contexts/UserContext'
@@ -27,9 +27,7 @@ export default function StepThree({ stepDown }) {
     }
     dispatch({ type: "SIGNUP" })
 
-    axios.post("/api/user/signup", data, {
-      "Content-type": "application/json"
-    })
+    axios.post("/signup", data)
       .then(res => {
         if (res.status === 200 && res.statusText === "OK") {
           dispatch({ type: "SUCCESS", payload: res.data.message })
@@ -44,7 +42,7 @@ export default function StepThree({ stepDown }) {
 
   return (
     <div className="w-75 m-auto pt-5">
-      { error ? <MessageDisplay error={error} /> : null }
+      {error ? <MessageDisplay error={error} /> : null}
       {
         isSubmitted ? (
           <>

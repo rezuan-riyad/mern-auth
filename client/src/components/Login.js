@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../utils/axios'
 import React, { useReducer } from 'react'
 import styles from '../styles/FormLayout.module.css'
 import logo from '../assets/img/logo.png'
@@ -21,16 +21,14 @@ export default function Login() {
 
   const handleSubmission = (e) => {
     e.preventDefault();
-    if(!email || !password){
-      return dispatch({ 
-        type: 'SET_ERROR', 
+    if (!email || !password) {
+      return dispatch({
+        type: 'SET_ERROR',
         payload: "Email and Password must be filled."
       })
-    } 
+    }
     dispatch({ type: 'LOGIN' })
-    axios.post("/api/user/signin", { email, password }, {
-      "Content-type": "application/json"
-    })
+    axios.post("/signin", { email, password })
       .then(res => {
         const { firstname, lastname, country, city, token } = res.data
         const user = { firstname, lastname, country, city }
@@ -69,8 +67,8 @@ export default function Login() {
 
         <Form className="w-75 m-auto">
           {
-            error ? 
-            <MessageDisplay error={error} /> : null
+            error ?
+              <MessageDisplay error={error} /> : null
           }
           <Form.Group>
             <Form.Control
